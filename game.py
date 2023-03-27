@@ -11,7 +11,12 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode((800, 600))
         self.running = False
+        self.init_graphics()
 
+    def init_graphics(self):
+        img_birdl = pygame.image.load("images/chicken/flying/frame-1.png")
+        self.img_birdl = pygame.transform.rotozoom (img_birdl, 0, 1/16)
+        
     def run(self):
         clock = pygame.time.Clock()
 
@@ -35,7 +40,12 @@ class Game:
         pass
 
     def update_screen(self):
+        # Täytä tausta vaaleansinisellä
         self.screen.fill((230, 230, 255))
+
+        # Piirrä lintu
+        self.screen.blit(self.img_birdl, (100, 100))
+
         pygame.display.flip()
         
 
